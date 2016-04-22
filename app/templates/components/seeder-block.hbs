@@ -2,7 +2,7 @@
 {{#fader-notification isShowing=deleteReady isDelete=true}}Deleted!!{{/fader-notification}}
 <label class="label">{{sectionTitle}}</label>
 <p class="control">
-  {{input type="number" min=0 class="input" value=counter}}
+  {{input type="number" min=0 max=30 class="input" value=counter}}
 </p>
 <p class="control is-grouped">
   <button class="button is-primary {{if isDisabled 'is-disabled'}}" {{action "generateAction"}}>Generate</button>

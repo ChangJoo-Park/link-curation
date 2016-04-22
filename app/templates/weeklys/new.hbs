@@ -38,13 +38,13 @@
           <button class="button {{unless isDraftAndPublishable 'is-disabled'}}"  {{ action 'togglePreview' }}>
             Show Preview
           </button>
+          <button class="button is-info {{unless isDraftAndPublishable 'is-disabled'}}">
+            Save Weekly
+          </button>
+          <button class="button is-danger {{if isResetable 'is-disabled'}}" {{action "resetDraft"}}>
+            Reset
+          </button>
         {{/if}}
-        <button class="button is-info {{unless isDraftAndPublishable 'is-disabled'}}">
-          Save Weekly
-        </button>
-        <button class="button is-danger {{if isResetable 'is-disabled'}}" {{action "resetDraft"}}>
-          Reset
-        </button>
       </p>
     </div>
     <div class="is-clearfix"></div>

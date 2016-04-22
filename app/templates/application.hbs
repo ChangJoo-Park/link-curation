@@ -1,5 +1,40 @@
+{{!-- Main Nav --}}
+
+<header class="header">
+  <div class="container">
+    <!-- Left side -->
+    <div class="header-left">
+      <a class="header-item" href="#">
+        {{link-to 'LINK CURATION' 'application' tagName="h1" class="title is-3"}}
+      </a>
+    </div>
+
+    <!-- Hamburger menu (on mobile) -->
+    <span class="header-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+
+    <!-- Right side -->
+    <div class="header-right header-menu">
+      <span class="header-item">
+        {{link-to 'Archive' 'archive' class="link is-info"}}
+      </span>
+      <span class="header-item">
+        {{link-to 'Weekly' 'weeklys' class="link is-info"}}
+      </span>
+      <span class="header-item">
+        {{link-to 'Admin' 'admin' class="link is-info"}}
+      </span>
+    </div>
+  </div>
+</header>
+
 {{!-- Main --}}
 <div class="container">
   {{outlet}}
 </div>
 {{!-- Footer --}}
+
+
