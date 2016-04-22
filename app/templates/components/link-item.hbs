@@ -1,0 +1,33 @@
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img src="http://placehold.it/128x128">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>{{link.title}}</strong> <small>@johnsmith</small> <small>31 min ago</small>
+        <br>
+        <a href={{link.url}} target="_blank"> {{link.url}}</a>
+      </p>
+    </div>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <a class="navbar-item">
+          <span class="icon is-small">{{fa-icon "reply"}}</span>
+        </a>
+        <a class="navbar-item">
+          <span class="icon is-small">{{fa-icon "retweet"}}</span>
+        </a>
+        <a class="navbar-item">
+          <span class="icon is-small">{{fa-icon "heart"}}</span>
+        </a>
+      </div>
+    </nav>
+  </div>
+  <div class="media-right is-grouped">
+    {{yield}}
+  </div>
+</article>
+

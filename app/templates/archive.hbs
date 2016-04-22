@@ -1,3 +1,13 @@
 <h1>Archive</h1>
-{{links.length}}
+<div class="columns">
+  <div class="column">
+    <ul>
+      {{#each links as |link|}}
+        {{#link-item link=link}}
+          <button class="delete" {{action "deleteLink" link}}></button>
+        {{/link-item}}
+      {{/each}}
+    </ul>
+  </div>
+</div>
 {{outlet}}

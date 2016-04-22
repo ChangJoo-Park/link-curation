@@ -4,6 +4,14 @@ import attr from 'ember-data/attr';
 export default Model.extend({
   url: attr('string'),
   title: attr('string'),
-  createdAt: attr('date'),
-  updated: attr('at')
+  createdAt: attr('date', {
+    defaultValue() { return new Date(); }
+  }),
+  updatedAt: attr('date', {
+    defaultValue() { return new Date(); }
+  }),
+  isDraft: attr('boolean', {
+    defaultValue() { return false; }
+  }),
+  description: attr('string')
 });

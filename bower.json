@@ -6,6 +6,7 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "bulma": "^0.0.23",
-    "firebase": "^2.1.0"
+    "firebase": "^2.1.0",
+    "font-awesome": "~4.5.0"
   }
 }

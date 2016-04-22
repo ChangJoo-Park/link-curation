@@ -11,6 +11,10 @@ Router.map(function() {
   this.route('admin', function() {
     this.route('seeder');
   });
+  this.route('weeklys', function() {
+    this.route('show');
+    this.route('new');
+  });
 });
 
 export default Router;

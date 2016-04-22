@@ -1,0 +1,98 @@
+<h1 class="title is-2">New Weekly</h1>
+<div class="columns">
+  <div class="column is-4">
+    <h2 class="subtitle is-3">Your links</h2>
+    <ul>
+      {{#each links as |link|}}
+        <li>
+          <div>
+            {{link.title}}
+            {{#unless link.isDraft}}
+              <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
+                <span class="icon is-small">{{fa-icon "plus"}}</span>
+              </button>
+            {{/unless}}
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  <div class="column">
+    <div class="is-pulled-right">
+      {{!-- Help --}}
+      {{#unless hasDraftLink}}
+        <p class="help is-danger">Please add link</p>
+      {{/unless}}
+      {{#unless hasWeeklyTitle}}
+        <p class="help is-danger">Please insert title</p>
+      {{/unless}}
+
+      <p class="control is-grouped">
+        <button class="button {{unless isDraftAndPublishable 'is-disabled'}}">
+          Show Preview
+        </button>
+        <button class="button is-info {{unless isDraftAndPublishable 'is-disabled'}}">
+          Save Weekly
+        </button>
+        <button class="button is-danger {{if isResetable 'is-disabled'}}" {{action "resetDraft"}}>
+          Reset
+        </button>
+      </p>
+    </div>
+    <div class="is-clearfix"></div>
+    <p class="control">
+      {{!-- TODO: cancat id after name  --}}
+      <label for="weekly-name" class="label">New Weekly</label>
+      {{input id="weekly-name"  class="input" type="text" value=weeklyTitle}}
+    </p>
+    <p>
+      <label for="weekly-desc" class="label">This week's description</label>
+      {{textarea id="weekly-desc"  class="textarea" value=descriptionOfWeek}}
+    </p>
+    <hr>
+    <div class="is-pulled-right">
+      {{draftLinks.length}} {{if (gt draftLinks.length 1) 'links' 'link'}}
+    </div>
+    <div class="is-clearfix"></div>
+    <hr>
+    <div>
+      <ul>
+        {{#each draftLinks as |link|}}
+          <li>
+            <article class="media">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img src="http://placehold.it/128x128">
+                </p>
+              </figure>
+              <div class="media-content">
+                <div class="content">
+                  <div>
+                    <p>
+                      <strong>{{link.title}}</strong> {{link.url}}
+                    </p>
+
+                    <p><strong></strong></p>
+                    <label class="label">Description</label>
+                    <p class="control">
+                      {{textarea value=link.description class="textarea" placeholder="What is this link?"}}
+                    </p>
+                    <p class="control">
+                      <button class="button is-primary">Save</button>
+                      <button class="button is-link">Don't use description</button>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="media-right">
+                <button class="delete" {{action "removeLinkToDraft" link}}></button>
+              </div>
+            </article>
+            <hr>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
+{{outlet}}
