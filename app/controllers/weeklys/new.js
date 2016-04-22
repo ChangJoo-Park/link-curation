@@ -27,6 +27,8 @@ export default Ember.Controller.extend({
       this._toggleLink(link);
     },
     resetDraft() {
+      this.set('weeklyTitle', '');
+      this.set('weeklyDescription', '');
       this.get('draftLinks').forEach((link) => {
         this._toggleLink(link);
       }.bind(this));
