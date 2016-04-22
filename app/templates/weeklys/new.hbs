@@ -50,21 +50,17 @@
       {{textarea id="weekly-desc"  class="textarea" value=descriptionOfWeek}}
     </p>
     <hr>
+    {{weekly-new-draft-item-length }}
     <div class="is-pulled-right">
-      {{draftLinks.length}} {{if (gt draftLinks.length 1) 'links' 'link'}}
+      {{plural-item-view draftLinks.length 'link' 'links' }}
     </div>
     <div class="is-clearfix"></div>
     <hr>
     <div>
       <ul>
         {{#each draftLinks as |link|}}
-          <li>
-            {{weekly-new-draft-item
-                link=link
-                deleteAction="deleteDraftLink"
-            }}
-            <hr>
-          </li>
+          {{weekly-new-draft-item link=link deleteAction="deleteDraftLink"}}
+          <hr>
         {{/each}}
       </ul>
     </div>
