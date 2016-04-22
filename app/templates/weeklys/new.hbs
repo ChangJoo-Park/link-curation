@@ -59,7 +59,9 @@
     <div>
       <ul>
         {{#each draftLinks as |link|}}
-          {{weekly-new-draft-item link=link deleteAction="deleteDraftLink"}}
+          {{weekly-new-draft-item link=link
+              saveDescriptionAction="saveDraftDescription"
+              deleteAction="deleteDraftLink"}}
           <hr>
         {{/each}}
       </ul>

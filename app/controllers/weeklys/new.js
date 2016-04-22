@@ -19,6 +19,9 @@ export default Ember.Controller.extend({
       }
       this._toggleLink(link);
     },
+    saveDraftDescription(link) {
+      link.save();
+    },
     deleteDraftLink(link) {
       this._toggleLink(link);
     },

@@ -17,10 +17,11 @@
           <p class="control">
             {{textarea value=link.description class="textarea" placeholder="What is this link?"}}
           </p>
-          <p class="control">
-            <button class="button is-primary">Save</button>
-            <button class="button is-link">Don't use description</button>
-          </p>
+          {{#if link.hasDirtyAttributes}}
+            <p class="control">
+              <button class="button is-primary" {{action "saveDescriptionAction"}}>Save</button>
+            </p>
+          {{/if}}
         </div>
       </div>
     </div>
