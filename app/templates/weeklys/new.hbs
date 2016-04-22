@@ -59,35 +59,10 @@
       <ul>
         {{#each draftLinks as |link|}}
           <li>
-            <article class="media">
-              <figure class="media-left">
-                <p class="image is-64x64">
-                  <img src="http://placehold.it/128x128">
-                </p>
-              </figure>
-              <div class="media-content">
-                <div class="content">
-                  <div>
-                    <p>
-                      <strong>{{link.title}}</strong> {{link.url}}
-                    </p>
-
-                    <p><strong></strong></p>
-                    <label class="label">Description</label>
-                    <p class="control">
-                      {{textarea value=link.description class="textarea" placeholder="What is this link?"}}
-                    </p>
-                    <p class="control">
-                      <button class="button is-primary">Save</button>
-                      <button class="button is-link">Don't use description</button>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="media-right">
-                <button class="delete" {{action "removeLinkToDraft" link}}></button>
-              </div>
-            </article>
+            {{weekly-new-draft-item
+                link=link
+                deleteAction="deleteDraftLink"
+            }}
             <hr>
           </li>
         {{/each}}
