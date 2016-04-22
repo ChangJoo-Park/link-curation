@@ -3,11 +3,11 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'li',
   actions: {
-    saveDescriptionAction(link) {
+    saveDescriptionAction() {
       this.sendAction('saveDescriptionAction', this.get('link'));
     },
-    deleteAction(link) {
-      this.sendAction('deleteAction', link);
+    deleteAction() {
+      this.sendAction('deleteAction', this.get('link'));
     }
   }
 });

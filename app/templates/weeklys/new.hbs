@@ -1,22 +1,24 @@
 <h1 class="title is-2">New Weekly</h1>
 <div class="columns">
-  <div class="column is-4">
-    <h2 class="subtitle is-3">Your links</h2>
-    <ul>
-      {{#each links as |link|}}
-        <li>
-          <div>
-            {{link.title}}
-            {{#unless link.isDraft}}
-              <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
-                <span class="icon is-small">{{fa-icon "plus"}}</span>
-              </button>
-            {{/unless}}
-          </div>
-        </li>
-      {{/each}}
-    </ul>
-  </div>
+  {{#unless isPreviewMode}}
+    <div class="column is-4">
+      <h2 class="subtitle is-3">Your links</h2>
+      <ul>
+        {{#each links as |link|}}
+          <li>
+            <div>
+              {{link.title}}
+              {{#unless link.isDraft}}
+                <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
+                  <span class="icon is-small">{{fa-icon "plus"}}</span>
+                </button>
+              {{/unless}}
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/unless}}
   <div class="column">
     <div class="is-pulled-right">
       {{!-- Help --}}
@@ -28,9 +30,15 @@
       {{/unless}}
 
       <p class="control is-grouped">
-        <button class="button {{unless isDraftAndPublishable 'is-disabled'}}">
-          Show Preview
+        {{#if isPreviewMode}}
+        <button class="button" {{ action 'togglePreview' }}>
+          Show Edit
         </button>
+        {{else}}
+          <button class="button {{unless isDraftAndPublishable 'is-disabled'}}"  {{ action 'togglePreview' }}>
+            Show Preview
+          </button>
+        {{/if}}
         <button class="button is-info {{unless isDraftAndPublishable 'is-disabled'}}">
           Save Weekly
         </button>
@@ -40,32 +48,45 @@
       </p>
     </div>
     <div class="is-clearfix"></div>
-    <p class="control">
-      {{!-- TODO: cancat id after name  --}}
-      <label for="weekly-name" class="label">New Weekly</label>
-      {{input id="weekly-name"  class="input" type="text" value=weeklyTitle}}
-    </p>
-    <p>
-      <label for="weekly-desc" class="label">This week's description</label>
-      {{textarea id="weekly-desc"  class="textarea" value=descriptionOfWeek}}
-    </p>
-    <hr>
-    {{weekly-new-draft-item-length }}
-    <div class="is-pulled-right">
-      {{plural-item-view draftLinks.length 'link' 'links' }}
-    </div>
-    <div class="is-clearfix"></div>
-    <hr>
-    <div>
-      <ul>
-        {{#each draftLinks as |link|}}
-          {{weekly-new-draft-item link=link
-              saveDescriptionAction="saveDraftDescription"
-              deleteAction="deleteDraftLink"}}
-          <hr>
-        {{/each}}
-      </ul>
-    </div>
+    <br>
+    {{!-- Preivew --}}
+    {{#if isPreviewMode}}
+      {{weekly-draft-preview
+            links=draftLinks
+            sectionTitle=weeklyTitle
+            sectionDescription=weeklyDescription
+      }}
+    {{else}}
+      <div class="edit-draft">
+        {{!-- Edit --}}
+        <p class="control">
+          {{!-- TODO: cancat id after name  --}}
+          <label for="weekly-name" class="label">New Weekly</label>
+          {{input id="weekly-name"  class="input" type="text" value=weeklyTitle}}
+        </p>
+        <p>
+          <label for="weekly-desc" class="label">This week's description</label>
+          {{textarea id="weekly-desc"  class="textarea" value=weeklyDescription}}
+        </p>
+        <hr>
+        {{weekly-new-draft-item-length }}
+        <div class="is-pulled-right">
+          {{plural-item-view draftLinks.length 'link' 'links' }}
+        </div>
+        <div class="is-clearfix"></div>
+        <hr>
+        <div>
+          <ul>
+            {{#each draftLinks as |link|}}
+              {{weekly-new-draft-item link=link
+                  saveDescriptionAction="saveDraftDescription"
+                  deleteAction="deleteDraftLink"}}
+              <hr>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    {{/if}}
   </div>
 </div>
 {{outlet}}

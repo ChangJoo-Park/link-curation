@@ -2,8 +2,9 @@ import Ember from 'ember';
 import _ from 'lodash';
 
 export default Ember.Controller.extend({
+  isPreviewMode: false,
   weeklyTitle: '',
-  descriptionOfWeek: '',
+  weeklyDescription: '',
   draftLinks: Ember.computed('links.@each.isDraft', function() {
     return this.get('links').filterBy('isDraft');
   }),
@@ -29,6 +30,10 @@ export default Ember.Controller.extend({
       this.get('draftLinks').forEach((link) => {
         this._toggleLink(link);
       }.bind(this));
+    },
+    togglePreview() {
+      const newMode = !this.isPreviewMode;
+      this.set('isPreviewMode', newMode);
     }
   },
   // Private Methods

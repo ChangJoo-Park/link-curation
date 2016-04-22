@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="heading">
+    <h1 class="title has-text-centered">{{sectionTitle}}</h1>
+  </div>
+  <br>
+  <div class="content">
+      <p>{{sectionDescription}}</p>
+      {{#each links as |link|}}
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-64x64">
+                <img src="http://placehold.it/128x128" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <p>
+                  <strong><a href={{link.url}} target="_blank">{{link.title}}</a></strong>
+                  <br>
+                  {{link.description}}
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      {{/each}}
+  </div>
+</div>
+<hr>
+<article class="message">
+  <div class="message-header">
+    AAA weekly #33
+  </div>
+  <div class="message-body">
+    Curated by Peter Cooper and published by Cooper Press. <br>
+    Stop getting JavaScript Weekly : Change email address : Read this issue on the Web <br>
+    © Cooper Press Ltd. Office 30, Lincoln Way, Louth, LN11 0LS, UK <br>
+  </div>
+</article>
+
+<article class="message">
+  <div class="message-body is-info">
+  </div>
+</article>
+{{yield}}
