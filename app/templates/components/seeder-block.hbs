@@ -1,0 +1,11 @@
+{{#fader-notification isShowing=createReady isCreate=true}}Created!!{{/fader-notification}}
+{{#fader-notification isShowing=deleteReady isDelete=true}}Deleted!!{{/fader-notification}}
+<label class="label">{{sectionTitle}}</label>
+<p class="control">
+  {{input type="number" min=0 class="input" value=counter}}
+</p>
+<p class="control is-grouped">
+  <button class="button is-primary {{if isDisabled 'is-disabled'}}" {{action "generateAction"}}>Generate</button>
+  <button class="button is-danger" {{action "deleteAction"}}>Delete All</button>
+</p>
+{{yield}}

@@ -1,0 +1,15 @@
+<div class="columns">
+  {{number-box title="Links" number=links.length}}
+</div>
+
+<div class="columns">
+  {{seeder-block
+                counter=linkCounter
+                sectionTitle="Number of New links"
+                generateAction="generateLinks"
+                deleteAction="deleteLinks"
+                createReady=linkDone
+                deleteReady=linkDelDone
+  }}
+</div>
+{{outlet}}

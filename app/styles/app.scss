@@ -1,0 +1,12 @@
+.notification-fade {
+  opacity: 0;
+  display: none;
+  -webkit-transition: all 1s; /* Safari */
+  transition: all 1s;
+  &.notification-show {
+    display: block;
+    opacity: 1;
+    -webkit-transition: all 1s; /* Safari */
+    transition: all 1s;
+  }
+}

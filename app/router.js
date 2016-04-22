@@ -7,6 +7,10 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('home', { path: '/' },function() {});
+  this.route('archive');
+  this.route('admin', function() {
+    this.route('seeder');
+  });
 });
 
 export default Router;
