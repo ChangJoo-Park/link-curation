@@ -1,0 +1,49 @@
+<div class="columns">
+  <div class="column">
+    <label class="label">Preview</label>
+    <div class="box">
+      {{#if isSetPreview}}
+        <article class="media">
+          <div class="media-left">
+            <figure class="image is-64x64">
+              <img src="http://placehold.it/128x128" alt="Image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                linkTitle <small>{{newLink}}</small>
+                <br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+              </p>
+            </div>
+            <nav class="navbar">
+              <div class="navbar-left">
+                <a class="navbar-item">
+                  <span class="icon is-small"><i class="fa fa-reply"></i></span>
+                </a>
+                <a class="navbar-item">
+                  <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+                </a>
+                <a class="navbar-item">
+                  <span class="icon is-small"><i class="fa fa-heart"></i></span>
+                </a>
+              </div>
+            </nav>
+          </div>
+        </article>
+      {{/if}}
+    </div>
+  </div>
+  <div class="column">
+    <label class="label">Link</label>
+    <p class="control is-grouped has-icon">
+      <i class="fa {{if isValidLink 'fa-check' 'fa-warning'}}" ></i>
+      {{input class="input" type="text" placeholder="Please insert new link" value=newLink}}
+    </p>
+    {{#unless isValidLink}}
+      <span class="help is-danger">This link is invalid</span>
+    {{/unless}}
+
+  </div>
+</div>

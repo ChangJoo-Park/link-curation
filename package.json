@@ -47,6 +47,7 @@
     "loader.js": "^4.0.1"
   },
   "dependencies": {
-    "faker": "^3.1.0"
+    "faker": "^3.1.0",
+    "validator": "^5.2.0"
   }
 }

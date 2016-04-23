@@ -1,43 +1,47 @@
-<h2 class="title is-3">Weeklys</h2>
-<table class="table">
-  <thead>
+{{#if (gt weeklies.length 0)}}
+  <h2 class="title is-3">Weeklys</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Links</th>
+        <th>Published At</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Links</th>
+        <th>Published At</th>
+        <th>Created At</th>
+      </tr>
+    </tfoot>
+    <tbody>
+    {{#each model as |weekly|}}
     <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Links</th>
-      <th>Published At</th>
-      <th>Created At</th>
-    </tr>
-  </thead>
-  <tfoot>
-    <tr>
-      <th>#</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Links</th>
-      <th>Published At</th>
-      <th>Created At</th>
-    </tr>
-  </tfoot>
-  <tbody>
-  {{#each model as |weekly|}}
-  <tr>
-    <td>{{weekly.id}}</td>
-    {{#link-to 'weeklies.weekly' weekly tagName="td"}}
-      <a href="#">{{weekly.title}}</a>
-    {{/link-to}}
-    <td>{{weekly.description}}</td>
-    <td>{{weekly.links.length}}</td>
-    <td>
-      {{#if isPublished}}
-        {{moment-format weekly.publishedAt 'MM.DD.YYYY'}}
-      {{/if}}
+      <td>{{weekly.id}}</td>
+      {{#link-to 'weeklies.weekly' weekly tagName="td"}}
+        <a href="#">{{weekly.title}}</a>
+      {{/link-to}}
+      <td>{{weekly.description}}</td>
+      <td>{{weekly.links.length}}</td>
+      <td>
+        {{#if isPublished}}
+          {{moment-format weekly.publishedAt 'MM.DD.YYYY'}}
+        {{/if}}
 
-    </td>
-    <td>{{moment-from-now weekly.createdAt}}</td>
-  </tr>
-  {{/each}}
-  </tbody>
-</table>
+      </td>
+      <td>{{moment-from-now weekly.createdAt}}</td>
+    </tr>
+    {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <h1 class="title is-1">There is no weekly newsletter. Please add first.</h1>
+{{/if}}
 {{outlet}}

@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import _ from "lodash";
 
 /*
   example :
@@ -7,6 +8,9 @@ import Ember from 'ember';
 */
 export function pluralItemView(params) {
   let number = parseInt(params[0]);
+  if(_.isNaN(number)) {
+    number = 0;
+  }
   let singular = params[1];
   let plural = params[2];
   if (number > 1) {

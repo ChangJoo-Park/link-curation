@@ -1,25 +1,30 @@
 <div class="columns">
   {{#unless isPreviewMode}}
     <div class="column is-4">
-      <h2 class="subtitle is-3">Your links</h2>
-      <ul>
-        {{#each links as |link|}}
-          <li>
-            <div>
-              {{link.title}}
-              {{#unless link.isDraft}}
-                <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
-                  <span class="icon is-small">{{fa-icon "plus"}}</span>
-                </button>
-              {{/unless}}
-            </div>
-          </li>
-        {{/each}}
-      </ul>
+      <h2 class="title is-3">Your links</h2>
+      {{#if (gt links 0)}}
+        <ul>
+          {{#each links as |link|}}
+            <li>
+              <div>
+                {{link.title}}
+                {{#unless link.isDraft}}
+                  <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
+                    <span class="icon is-small">{{fa-icon "plus"}}</span>
+                  </button>
+                {{/unless}}
+              </div>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <h2 class="subtitle is-4">Please add links</h2>
+      {{/if}}
+
     </div>
   {{/unless}}
   <div class="column">
-    <h2 class="subtitle is-3">New Newsletter</h2>
+    <h2 class="title is-3">New Newsletter</h2>
     <div class="is-pulled-right">
       {{!-- Help --}}
       {{#unless hasDraftLink}}
