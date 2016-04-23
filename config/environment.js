@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'frontend',
     environment: environment,
     contentSecurityPolicyHeader: 'Content-Security-Policy',
-    contentSecurityPolicy: { 'connect-src': "'self' http://localhost:4200 https://auth.firebase.com wss://*.firebaseio.com" },
+    contentSecurityPolicy: { 'connect-src': "'self' http://localhost:4200 https://auth.firebase.com wss://*.firebaseio.com http://*.firebaseapp.com https://*.firebaseapp.com" },
     firebase: 'https://linkweekly.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
