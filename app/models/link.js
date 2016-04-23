@@ -1,3 +1,4 @@
+import DS from 'ember-data';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 
@@ -13,5 +14,6 @@ export default Model.extend({
   isDraft: attr('boolean', {
     defaultValue() { return false; }
   }),
-  description: attr('string')
+  description: attr('string'),
+  weekly: DS.belongsTo('weekly'),
 });

@@ -11,8 +11,10 @@ Router.map(function() {
   this.route('admin', function() {
     this.route('seeder');
   });
-  this.route('weeklys', function() {
-    this.route('show');
+  this.route('collections');
+
+  this.route('weeklies', function() {
+    this.route('weekly', { path: '/:weekly_id' }, function() {});
     this.route('new');
   });
 });
