@@ -13,13 +13,25 @@
           </p>
 
           <p><strong></strong></p>
-          <label class="label">Description</label>
-          <p class="control">
-            {{textarea value=link.description class="textarea" placeholder="What is this link?"}}
-          </p>
-          {{#if link.hasDirtyAttributes}}
+
+          {{#if isEditDescription}}
+            <label class="label">Description</label>
             <p class="control">
-              <button class="button is-primary" {{action "saveDescriptionAction"}}>Save</button>
+              {{textarea value=link.description class="textarea" placeholder="What is this link?"}}
+            </p>
+            <p class="control is-grouped">
+              {{#if link.hasDirtyAttributes}}
+                <button class="button is-primary" {{action "saveDescriptionAction"}}>Save</button>
+              {{/if}}
+              <button class="button is-link" {{action "cancelDescriptionAction"}}>Cancel</button>
+            </p>
+          {{else}}
+            {{link.description}}
+            <br>
+            <p class="control">
+              <button class="button is-link" {{action "editDescriptionAction"}}>
+                {{fa-icon "pencil"}}
+              </button>
             </p>
           {{/if}}
         </div>

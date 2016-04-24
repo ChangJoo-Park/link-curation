@@ -38,7 +38,7 @@
           <button class="button {{unless isDraftAndPublishable 'is-disabled'}}"  {{ action 'togglePreview' }}>
             Show Preview
           </button>
-          <button class="button is-info {{unless isDraftAndPublishable 'is-disabled'}}">
+          <button class="button is-info {{unless isDraftAndPublishable 'is-disabled'}}" {{action 'saveWeekly'}}>
             Save Weekly
           </button>
           <button class="button is-danger {{if isResetable 'is-disabled'}}" {{action "resetDraft"}}>
@@ -52,9 +52,9 @@
     {{!-- Preivew --}}
     {{#if isPreviewMode}}
       {{weekly-draft-preview
-            links=draftLinks
-            sectionTitle=weeklyTitle
-            sectionDescription=weeklyDescription
+            links=newWeekly.links
+            sectionTitle=newWeekly.title
+            sectionDescription=newWeekly.description
       }}
     {{else}}
       <div class="edit-draft">
@@ -62,22 +62,22 @@
         <p class="control">
           {{!-- TODO: cancat id after name  --}}
           <label for="weekly-name" class="label">New Weekly</label>
-          {{input id="weekly-name"  class="input" type="text" value=weeklyTitle}}
+          {{input id="weekly-name"  class="input" type="text" value=newWeekly.title}}
         </p>
         <p>
           <label for="weekly-desc" class="label">This week's description</label>
-          {{textarea id="weekly-desc"  class="textarea" value=weeklyDescription}}
+          {{textarea id="weekly-desc"  class="textarea" value=newWeekly.description}}
         </p>
         <hr>
         {{weekly-new-draft-item-length }}
         <div class="is-pulled-right">
-          {{plural-item-view draftLinks.length 'link' 'links' }}
+          {{plural-item-view newWeekly.links.length 'link' 'links' }}
         </div>
         <div class="is-clearfix"></div>
         <hr>
         <div>
           <ul>
-            {{#each draftLinks as |link|}}
+            {{#each newWeekly.links as |link|}}
               {{weekly-new-draft-item link=link
                   saveDescriptionAction="saveDraftDescription"
                   deleteAction="deleteDraftLink"}}

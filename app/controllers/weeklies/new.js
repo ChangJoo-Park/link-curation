@@ -3,35 +3,37 @@ import _ from 'lodash';
 
 export default Ember.Controller.extend({
   isPreviewMode: false,
-  weeklyTitle: '',
-  weeklyDescription: '',
-  draftLinks: Ember.computed('links.@each.isDraft', function() {
-    return this.get('links').filterBy('isDraft');
-  }),
-  hasDraftLink: Ember.computed.gt('draftLinks.length', 0),
-  hasWeeklyTitle: Ember.computed.notEmpty('weeklyTitle'),
+  hasDraftLink: Ember.computed.gt('newWeekly.links.length', 0),
+  hasWeeklyTitle: Ember.computed.notEmpty('newWeekly.title'),
   isResetable: Ember.computed.not('hasDraftLink'),
   isDraftAndPublishable: Ember.computed.and('hasDraftLink', 'hasWeeklyTitle'),
   actions: {
     addLinkToDraft(link) {
-      console.log("Add");
       if(this._isDuplicate(link)) {
         return;
       }
-      this._toggleLink(link);
+      let weekly = this.get('newWeekly');
+      weekly.get('links').addObject(link);
+    },
+    saveWeekly() {
+      let weekly = this.get('newWeekly');
+      weekly.save().then(()=>{
+        this.transitionToRoute('weeklies.index');
+      });
     },
     saveDraftDescription(link) {
       link.save();
     },
     deleteDraftLink(link) {
-      this._toggleLink(link);
+      let weekly = this.get('newWeekly');
+      weekly.get('links').removeObject(link);
     },
     resetDraft() {
-      this.set('weeklyTitle', '');
-      this.set('weeklyDescription', '');
-      this.get('draftLinks').forEach((link) => {
-        this._toggleLink(link);
-      }.bind(this));
+      let weekly = this.get('newWeekly');
+      this.set('newWeekly.title', '');
+      this.set('newWeekly.description', '');
+      weekly.get('links').clear();
+      weekly.rollbackAttributes();
     },
     togglePreview() {
       const newMode = !this.isPreviewMode;
@@ -39,15 +41,16 @@ export default Ember.Controller.extend({
     }
   },
   // Private Methods
-  _toggleLink(link) {
+  _toggleDraftLink(link) {
     this.store.findRecord('link', link.get('id')).then((record)=>{
       let isDraft =  record.get('isDraft');
       record.set('isDraft', !isDraft);
-      record.save();
+      // record.save();
     });
   },
 
   _isDuplicate(link) {
-    return _.some(this.draftLinks, link);
+    let links = this.get('newWeekly.links');
+    return _.some(links, link);
   }
 });

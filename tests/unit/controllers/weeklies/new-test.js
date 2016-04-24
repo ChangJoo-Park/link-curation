@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('controller:weeklys/new', 'Unit | Controller | weeklys/new', {
+moduleFor('controller:weeklies/new', 'Unit | Controller | weeklies/new', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });
