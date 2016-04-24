@@ -16,6 +16,7 @@ export default Ember.Route.extend({
     willTransition(transition) {
       let weekly = this.controller.get('newWeekly');
       if(weekly.get('hasDirtyAttributes')) {
+        // TODO : 무조건 나오는거 고쳐야됨
         let confirmation = confirm("Are you sure to abandon progress?");
         if (confirmation) {
           weekly.rollbackAttributes();

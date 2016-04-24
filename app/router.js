@@ -11,11 +11,14 @@ Router.map(function() {
   this.route('admin', function() {
     this.route('seeder');
   });
-  this.route('collections');
 
-  this.route('weeklies', function() {
-    this.route('weekly', { path: '/:weekly_id' }, function() {});
+  this.route('collections', function(){
     this.route('new');
+    this.route('show', { path: '/:collection_id'}, function() {
+      this.route('weeklies', function() {
+        this.route('weekly', { path: '/:weekly_id' }, function() {});
+      });
+    });
   });
 });
 
