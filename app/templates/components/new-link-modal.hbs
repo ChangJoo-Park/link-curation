@@ -1,0 +1,28 @@
+<div class="modal-background"></div>
+<div class="modal-container">
+  <div class="modal-content">
+    <label class="label">Link URL</label>
+    <p class="control">
+      {{input value=newLink class="input" type="text" placeholder="Please insert link" autofocus="autofocus"}}
+      {{#unless isValidLink}}
+        <span class="help is-danger">This link is unavailable</span>
+      {{/unless}}
+    </p>
+    <label class="label">Title</label>
+    <p class="control">
+      {{input value=newTitle class="input" type="text" placeholder="Please insert title"}}
+      {{#unless isNotEmptyTitle}}
+        <span class="help is-danger">please insert title</span>
+      {{/unless}}
+    </p>
+    <label class="label">Description</label>
+    <p class="control">
+      {{textarea value=newDescription class="textarea" placeholder="Textarea"}}
+    </p>
+    <p class="control">
+      <button class="button is-primary {{if isSaveAvailable '' 'is-disabled'}}" {{action "saveLink"}} >Submit</button>
+      <button class="button is-link" {{action "closeLinkModal"}}>Cancel</button>
+    </p>
+  </div>
+</div>
+<button class="modal-close" {{action "closeLinkModal"}}></button>

@@ -7,6 +7,15 @@
       <a class="header-item" href="#">
         {{link-to 'LINK CURATION' 'application' tagName="h1" class="title is-3"}}
       </a>
+      <span class="header-item">
+        {{link-to 'Archive' 'archive' class="link is-info"}}
+      </span>
+      <span class="header-item">
+        {{link-to 'Weekly' 'weeklies' class="link is-info"}}
+      </span>
+      <span class="header-item">
+        {{link-to 'Admin' 'admin' class="link is-info"}}
+      </span>
     </div>
 
     <!-- Hamburger menu (on mobile) -->
@@ -19,13 +28,9 @@
     <!-- Right side -->
     <div class="header-right header-menu">
       <span class="header-item">
-        {{link-to 'Archive' 'archive' class="link is-info"}}
-      </span>
-      <span class="header-item">
-        {{link-to 'Weekly' 'weeklies' class="link is-info"}}
-      </span>
-      <span class="header-item">
-        {{link-to 'Admin' 'admin' class="link is-info"}}
+        <button class="button is-primary" {{action "openLinkModal"}}>
+          {{fa-icon "plus"}}
+        </button>
       </span>
     </div>
   </div>
@@ -36,5 +41,5 @@
   {{outlet}}
 </div>
 {{!-- Footer --}}
-
+{{new-link-modal id="new-link-modal"}}
 
