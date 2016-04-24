@@ -1,0 +1,22 @@
+<div class="modal-background"></div>
+<div class="modal-container">
+  <div class="modal-content">
+    <h1 class="title is-3">New Collection</h1>
+    <label class="label">Title</label>
+    <p class="control">
+      {{input value=newTitle class="input" type="text" placeholder="Please insert title"}}
+      {{#unless isNotEmptyTitle}}
+        <span class="help is-danger">please insert title</span>
+      {{/unless}}
+    </p>
+    <label class="label">Description</label>
+    <p class="control">
+      {{textarea value=newDescription class="textarea" placeholder="Textarea"}}
+    </p>
+    <p class="control">
+      <button class="button is-primary" {{action "saveCollection"}} >Submit</button>
+      <button class="button is-link" {{action "closeCollectionModal"}}>Cancel</button>
+    </p>
+  </div>
+</div>
+<button class="modal-close" {{action "closeCollectionModal"}}></button>
