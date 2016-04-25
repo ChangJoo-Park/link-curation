@@ -23,9 +23,7 @@
       <td>{{weekly.description}}</td>
       <td>{{weekly.links.length}}</td>
       <td>
-        {{#if isPublished}}
-          {{moment-format weekly.publishedAt 'MM.DD.YYYY'}}
-        {{/if}}
+        {{moment-format weekly.publishedAt 'MM.DD.YYYY'}}
       </td>
       <td>{{moment-from-now weekly.createdAt}}</td>
     </tr>

@@ -21,12 +21,12 @@ export default Ember.Controller.extend({
       let weekly = this.get('newWeekly');
       let collection = this.get('collection');
       weekly.set('collection', collection);
-      console.log
-      // weekly.save().then(()=>{
-      //   collection.save().then(()=>{
-      //     this.transitionToRoute('collections.index');
-      //   });
-      // });
+      console.log(weekly.get('publishedAt'));
+      weekly.save().then(()=>{
+        collection.save().then(()=>{
+          this.transitionToRoute('collections.index');
+        });
+      });
     },
     saveDraftDescription(link) {
       link.save();
