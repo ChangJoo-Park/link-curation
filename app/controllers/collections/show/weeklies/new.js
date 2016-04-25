@@ -21,10 +21,9 @@ export default Ember.Controller.extend({
       let weekly = this.get('newWeekly');
       let collection = this.get('collection');
       weekly.set('collection', collection);
-      console.log(weekly.get('publishedAt'));
       weekly.save().then(()=>{
         collection.save().then(()=>{
-          this.transitionToRoute('collections.index');
+          this.transitionToRoute('collections.show', collection);
         });
       });
     },

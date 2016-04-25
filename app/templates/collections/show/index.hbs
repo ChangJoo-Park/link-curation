@@ -1,18 +1,6 @@
 <div class="columns">
   <div class="column is-one-quarter">
-    <nav class="panel">
-      <p class="panel-heading">
-        {{plural-item-view collections.length "Collection" "Collections"}}
-      </p>
-      {{#each collections as |collection|}}
-      {{#link-to  'collections.show' collection class="panel-block"}}
-        <span class="panel-icon">
-          {{fa-icon "book"}}
-        </span>
-        {{collection.title}}
-      {{/link-to}}
-      {{/each}}
-    </nav>
+    {{collection-side-panel collections=collections}}
   </div>
   <div class="column">
     <h2 class="title is-3">
@@ -45,9 +33,8 @@
             <th>#</th>
             <th>Title</th>
             <th>Description</th>
-            <th>Links</th>
-            <th>Published At</th>
-            <th>Created At</th>
+            <th>Published Date</th>
+            <th>Created Date</th>
             <th></th>
           </tr>
         </thead>
@@ -57,16 +44,20 @@
           <td>{{index}}</td>
           <td>{{weekly.title}}</td>
           <td>{{weekly.description}}</td>
-          <td>{{weekly.links.length}}</td>
           <td>
-            {{moment-format weekly.publishedAt 'MM.DD.YYYY'}}
+            {{moment-format weekly.publishedAt 'MM.DD.YYYY HH:mm'}}
           </td>
           <td>{{moment-from-now weekly.createdAt}}</td>
           <td>
-            <p class="control is-grouped">
+            <p class="control has-addons">
               {{#link-to 'collections.show.weeklies.show' weekly}}
                 <span class="icon"><i class="fa fa-eye"></i></span>
               {{/link-to}}
+              {{#unless weekly.isPublished}}
+                <a href="#">
+                  <span class="icon"><i class="fa fa-trash"></i></span>
+                </a>
+              {{/unless}}
             </p>
           </td>
         </tr>
@@ -77,8 +68,5 @@
       <h1 class="title is-1">There is no weekly newsletter. Please add first.</h1>
     {{/if}}
     {{outlet}}
-
-
-
   </div>
 </div>

@@ -1,0 +1,14 @@
+<nav class="panel">
+  <p class="panel-heading">
+    {{plural-item-view collections.length "Collection" "Collections"}}
+  </p>
+  {{#each collections as |collection|}}
+  {{#link-to 'collections.show' collection class="panel-block"}}
+    <span class="panel-icon">
+      {{fa-icon "bars"}}
+    </span>
+    {{collection.title}}
+  {{/link-to}}
+  {{/each}}
+</nav>
+{{yield}}
