@@ -15,14 +15,20 @@ export default Ember.Controller.extend({
         return;
       }
       let weekly = this.get('newWeekly');
-      weekly.get('links').addObject(link);
+
+      weekly.get('links').addObject(this.store.createRecord('weeklyLink',{
+        url: link.get('url'),
+        title: link.get('title'),
+        description: link.get('description'),
+        weekly: weekly
+      }));
     },
     saveWeekly() {
       let weekly = this.get('newWeekly');
       let collection = this.get('collection');
-      // weekly.get('links').forEach((link)=>{
-      //   link.save();
-      // });
+      weekly.get('links').forEach((link)=>{
+        link.save();
+      });
       weekly.set('collection', collection);
       weekly.save().then(()=>{
         collection.save().then(()=>{
@@ -50,16 +56,16 @@ export default Ember.Controller.extend({
     }
   },
   // Private Methods
-  _toggleDraftLink(link) {
-    this.store.findRecord('link', link.get('id')).then((record)=>{
-      let isDraft =  record.get('isDraft');
-      record.set('isDraft', !isDraft);
-      // record.save();
+  _isDuplicate(newLink) {
+    let links = this.get('newWeekly').get('links');
+    let isDuplicate = false;
+    links.forEach((link)=>{
+      const url = link.get('url');
+      if (newLink.get('url') === url) {
+        isDuplicate = true;
+        return isDuplicate
+      }
     });
-  },
-
-  _isDuplicate(link) {
-    let links = this.get('newWeekly.links');
-    return _.some(links, link);
+    return isDuplicate;
   }
 });

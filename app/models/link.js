@@ -11,9 +11,5 @@ export default Model.extend({
   updatedAt: attr('date', {
     defaultValue() { return new Date(); }
   }),
-  isDraft: attr('boolean', {
-    defaultValue() { return false; }
-  }),
   description: attr('string'),
-  weekly: DS.belongsTo('weekly', { async: true }),
 });
