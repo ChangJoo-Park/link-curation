@@ -28,7 +28,7 @@ export default Ember.Controller.extend({
       });
     },
     saveDraftDescription(link) {
-      link.save();
+      // link.save();
     },
     deleteDraftLink(link) {
       let weekly = this.get('newWeekly');

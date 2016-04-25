@@ -7,6 +7,7 @@
       {{#if isEditState}}
         {{input type="text" value=collection.title}}
         <button class="button is-primary" {{action "saveCollection"}}>{{fa-icon "save"}}</button>
+        <button class="button is-danger" {{action "deleteCollection"}}>{{fa-icon "trash"}}</button>
         <button class="button is-link" {{action "cancelEdit"}}>Cancel</button>
       {{else}}
         {{collection.title}}

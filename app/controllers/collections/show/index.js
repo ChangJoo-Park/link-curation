@@ -11,6 +11,12 @@ export default Ember.Controller.extend({
       collection.save();
       this.changeEditState(false);
     },
+    deleteCollection() {
+      let collection = this.get('collection');
+      collection.destroyRecord();
+      this.changeEditState(false);
+      this.transitionToRoute('collections.index');
+    },
     cancelEdit() {
       let collection = this.get('collection');
       collection.rollbackAttributes();

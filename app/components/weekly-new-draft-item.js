@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   isEditDescription: false,
   actions: {
     saveDescriptionAction() {
-      this.sendAction('saveDescriptionAction', this.get('link'));
+      // this.sendAction('saveDescriptionAction', this.get('link'));
       this.set('isEditDescription', false);
     },
     cancelDescriptionAction() {
