@@ -1,56 +1,84 @@
-<h2 class="title is-3">
-  {{#if isEditState}}
-    {{input type="text" value=model.title}}
-    <button class="button is-primary" {{action "saveCollection"}}>{{fa-icon "save"}}</button>
-    <button class="button is-link" {{action "cancelEdit"}}>Cancel</button>
-  {{else}}
-    {{model.title}}
-    <button class="button" {{action "editCollection"}}>{{fa-icon "pencil"}}</button>
-  {{/if}}
+<div class="columns">
+  <div class="column is-one-quarter">
+    <nav class="panel">
+      <p class="panel-heading">
+        {{plural-item-view collections.length "Collection" "Collections"}}
+      </p>
+      {{#each collections as |collection|}}
+      {{#link-to  'collections.show' collection class="panel-block"}}
+        <span class="panel-icon">
+          {{fa-icon "book"}}
+        </span>
+        {{collection.title}}
+      {{/link-to}}
+      {{/each}}
+    </nav>
+  </div>
+  <div class="column">
+    <h2 class="title is-3">
+      {{#if isEditState}}
+        {{input type="text" value=collection.title}}
+        <button class="button is-primary" {{action "saveCollection"}}>{{fa-icon "save"}}</button>
+        <button class="button is-link" {{action "cancelEdit"}}>Cancel</button>
+      {{else}}
+        {{collection.title}}
+        <button class="button" {{action "editCollection"}}>{{fa-icon "pencil"}}</button>
+      {{/if}}
+    </h2>
+    <h3 class="subtitle is-3">
+      {{#if isEditState}}
+        {{textarea value=collection.description}}
+      {{else}}
+        {{collection.description}}
+      {{/if}}
+    </h3>
+    <div class="is-pulled-right">
+      {{#link-to 'collections.show.weeklies.new' class="button is-primary"}}New Weekly{{/link-to}}
+    </div>
+    <div class="is-clearfix"></div>
+    <br>
+    {{!-- Weekly NewsLetter list --}}
+    {{#if (gt collection.weeklies.length 0)}}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Links</th>
+            <th>Published At</th>
+            <th>Created At</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each collection.weeklies as |weekly index|}}
+        <tr>
+          <td>{{index}}</td>
+          <td>{{weekly.title}}</td>
+          <td>{{weekly.description}}</td>
+          <td>{{weekly.links.length}}</td>
+          <td>
+            {{moment-format weekly.publishedAt 'MM.DD.YYYY'}}
+          </td>
+          <td>{{moment-from-now weekly.createdAt}}</td>
+          <td>
+            <p class="control is-grouped">
+              {{#link-to 'collections.show.weeklies.show' weekly}}
+                <span class="icon"><i class="fa fa-eye"></i></span>
+              {{/link-to}}
+            </p>
+          </td>
+        </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <h1 class="title is-1">There is no weekly newsletter. Please add first.</h1>
+    {{/if}}
+    {{outlet}}
 
 
-</h2>
-<h3 class="subtitle is-3">
-{{#if isEditState}}
-  {{textarea value=model.description}}
-{{else}}
-  {{model.description}}
-{{/if}}</h3>
 
-{{#link-to 'collections.show.weeklies.new' class="button is-primary"}}New Weekly{{/link-to}}
-{{!-- Weekly NewsLetter list --}}
-{{#if (gt model.weeklies.length 0)}}
-  <table class="table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Links</th>
-        <th>Published At</th>
-        <th>Created At</th>
-      </tr>
-    </thead>
-    <tbody>
-    {{#each model.weeklies as |weekly|}}
-    <tr>
-      <td>{{weekly.id}}</td>
-      <td>
-      {{#link-to 'collections.show.weeklies.show' weekly}}{{weekly.title}}{{/link-to}}
-      </td>
-      <td>{{weekly.description}}</td>
-      <td>{{weekly.links.length}}</td>
-      <td>
-        {{moment-format weekly.publishedAt 'MM.DD.YYYY'}}
-      </td>
-      <td>{{moment-from-now weekly.createdAt}}</td>
-    </tr>
-    {{/each}}
-    </tbody>
-  </table>
-{{else}}
-  <h1 class="title is-1">There is no weekly newsletter. Please add first.</h1>
-{{/if}}
-{{outlet}}
-
-
+  </div>
+</div>

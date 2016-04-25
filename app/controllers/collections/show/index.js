@@ -7,12 +7,12 @@ export default Ember.Controller.extend({
       this.changeEditState(true);
     },
     saveCollection() {
-      let collection = this.get('model');
+      let collection = this.get('collection');
       collection.save();
       this.changeEditState(false);
     },
     cancelEdit() {
-      let collection = this.get('model');
+      let collection = this.get('collection');
       collection.rollbackAttributes();
       this.changeEditState(false);
     }
