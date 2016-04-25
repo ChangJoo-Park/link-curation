@@ -51,11 +51,11 @@
           <td>
             <p class="control has-addons">
               {{#link-to 'collections.show.weeklies.show' weekly}}
-                <span class="icon"><i class="fa fa-eye"></i></span>
+                <span class="icon">{{fa-icon "pencil"}}</span>
               {{/link-to}}
               {{#unless weekly.isPublished}}
                 <a href="#">
-                  <span class="icon"><i class="fa fa-trash"></i></span>
+                  <span class="icon">{{fa-icon "trash"}}</span>
                 </a>
               {{/unless}}
             </p>

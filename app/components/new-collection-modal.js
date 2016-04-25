@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   newTitle: '',
   newDescription: '',
+  isNotEmptyTitle: Ember.computed.gt('newTitle.length', 0),
   actions: {
     saveCollection() {
       const title = this.newTitle;
