@@ -1,5 +1,23 @@
-<h2 class="title is-3">{{model.title}}  {{#link-to 'collections.show.weeklies.new' class="button is-primary"}}New Weekly{{/link-to}}</h2>
-<h3 class="subtitle is-3">{{model.description}}</h3>
+<h2 class="title is-3">
+  {{#if isEditState}}
+    {{input type="text" value=model.title}}
+    <button class="button is-primary" {{action "saveCollection"}}>{{fa-icon "save"}}</button>
+    <button class="button is-link" {{action "cancelEdit"}}>Cancel</button>
+  {{else}}
+    {{model.title}}
+    <button class="button" {{action "editCollection"}}>{{fa-icon "pencil"}}</button>
+  {{/if}}
+
+
+</h2>
+<h3 class="subtitle is-3">
+{{#if isEditState}}
+  {{textarea value=model.description}}
+{{else}}
+  {{model.description}}
+{{/if}}</h3>
+
+{{#link-to 'collections.show.weeklies.new' class="button is-primary"}}New Weekly{{/link-to}}
 {{!-- Weekly NewsLetter list --}}
 {{#if (gt model.weeklies.length 0)}}
   <table class="table">
