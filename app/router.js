@@ -18,6 +18,7 @@ Router.map(function() {
       this.route('weeklies', function(){
         this.route('new');
         this.route('show', { path: '/:weekly_id'});
+        this.route('edit', { path: '/:weekly_id/edit'});
       });
     });
 

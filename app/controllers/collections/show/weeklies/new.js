@@ -20,6 +20,9 @@ export default Ember.Controller.extend({
     saveWeekly() {
       let weekly = this.get('newWeekly');
       let collection = this.get('collection');
+      // weekly.get('links').forEach((link)=>{
+      //   link.save();
+      // });
       weekly.set('collection', collection);
       weekly.save().then(()=>{
         collection.save().then(()=>{

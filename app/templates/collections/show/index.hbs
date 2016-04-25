@@ -35,7 +35,6 @@
             <th>Title</th>
             <th>Description</th>
             <th>Published Date</th>
-            <th>Created Date</th>
             <th></th>
           </tr>
         </thead>
@@ -48,7 +47,6 @@
           <td>
             {{moment-format weekly.publishedAt 'MM.DD.YYYY HH:mm'}}
           </td>
-          <td>{{moment-from-now weekly.createdAt}}</td>
           <td>
             <p class="control has-addons">
               {{#link-to 'collections.show.weeklies.show' weekly}}

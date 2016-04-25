@@ -1,3 +1,10 @@
-<h1 class="title">{{model.title}}</h1>
-{{model.links.length}}
+{{weekly-draft-preview
+      links=weekly.links
+      sectionTitle=weekly.title
+      sectionDescription=weekly.description
+}}
+
+<hr>
+
+{{link-to 'Back to collections' 'collections.show.index' collection}}
 {{outlet}}
