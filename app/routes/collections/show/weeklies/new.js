@@ -14,7 +14,8 @@ export default Ember.Route.extend({
     controller.set('links', model.links);
     controller.set('newWeekly', model.newWeekly);
     controller.set('collection', model.collection);
-    const title = `${model.collection.get('title')} #${model.collection.get('weeklies.length') + 1}`;
+    const number = model.collection.get('weeklies.length') + 1;
+    const title = `${model.collection.get('title')} #${number}`;
     controller.set('newWeekly.title', title);
   },
   actions: {

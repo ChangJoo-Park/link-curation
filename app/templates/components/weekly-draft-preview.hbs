@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container weekly-preview">
   <div class="heading">
     <h1 class="title has-text-centered">{{sectionTitle}}</h1>
   </div>
@@ -8,11 +8,6 @@
       {{#each links as |link|}}
         <div class="box">
           <article class="media">
-            <div class="media-left">
-              <figure class="image is-64x64">
-                <img src="http://placehold.it/128x128" alt="Image">
-              </figure>
-            </div>
             <div class="media-content">
               <div class="content">
                 <p>
@@ -28,4 +23,5 @@
   </div>
 </div>
 <hr>
+{{!-- TODO: Add user profile --}}
 {{yield}}
