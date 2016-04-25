@@ -1,3 +1,6 @@
+html {
+  background-color: white;
+}
 .notification-fade {
   opacity: 0;
   display: none;
@@ -23,4 +26,17 @@
 
 .weekly-preview {
   margin: 20px;
+}
+
+.panel-block.active {
+  background-color: #1fc8db;
+  color: white;
+  .panel-icon {
+    color: white;
+  }
+}
+
+.side-links {
+  max-height: 80vh;
+  overflow-y: scroll;
 }
