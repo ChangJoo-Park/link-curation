@@ -68,7 +68,20 @@
     {{/if}}
 
     {{!-- Footer 영역 --}}
+    <label for="" class="label">Preview</label>
+    <article class="message">
+      <div class="message-header">
 
+      </div>
+      <div class="message-body">
+        {{collection.footer}}
+      </div>
+    </article>
+
+    <label class="label">Message</label>
+    <p class="control">
+      {{textarea value=collection.footer class="textarea" placeholder="Textarea"}}
+    </p>
     {{outlet}}
   </div>
 </div>
