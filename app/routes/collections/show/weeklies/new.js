@@ -9,11 +9,13 @@ export default Ember.Route.extend({
       links: this.store.findAll('link'),
     });
   },
-  setupController(controller, model, transition) {
+  setupController(controller, model) {
     this._super(controller, model);
     controller.set('links', model.links);
     controller.set('newWeekly', model.newWeekly);
     controller.set('collection', model.collection);
+    const title = `${model.collection.get('title')} #${model.collection.get('weeklies.length') + 1}`;
+    controller.set('newWeekly.title', title);
   },
   actions: {
     willTransition(transition) {
