@@ -16,9 +16,11 @@ Router.map(function() {
     this.route('new');
     this.route('show', { path: '/:collection_id'}, function() {
       this.route('weeklies', function() {
-        this.route('weekly', { path: '/:weekly_id' }, function() {});
+        this.route('new');
+        this.route('show', { path: '/:weekly_id' });
       });
     });
+
   });
 });
 

@@ -1,8 +1,14 @@
-{{collections.length}}
-<ul>
-{{#each collections as |collection|}}
-  <li>{{collection.title}}</li>
-{{/each}}
-</ul>
-
+<div class="columns is-multiline">
+  {{#each model as |collection|}}
+  <div class="column is-one-quarter">
+    <div class="notification is-warning">
+      <p class="collection-header">{{#link-to 'collections.show' collection}}{{collection.title}}{{/link-to}}</p>
+      <p class="collection-description">{{collection.description}}</p>
+      <p class="collection-miscellaneous">
+        Weeklies : {{collection.weeklies.length}}
+      </p>
+    </div>
+  </div>
+  {{/each}}
+</div>
 {{outlet}}

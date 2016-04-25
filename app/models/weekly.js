@@ -7,7 +7,9 @@ export default Model.extend({
   collection: DS.belongsTo('collection', { async: true }),
   links: DS.hasMany('link', { async: true }),
   isPublished: attr('boolean', { defaultValue: false }),
-  publishedAt: attr('date'),
+  publishedAt: attr('date', {
+    defaultValue() {return new Date();}
+  }),
   createdAt: attr('date', {
     defaultValue() {return new Date();}
   }),

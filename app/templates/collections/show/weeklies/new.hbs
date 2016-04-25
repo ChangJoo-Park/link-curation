@@ -1,0 +1,117 @@
+{{weekly.collection}}
+<div class="columns">
+  {{#unless isPreviewMode}}
+    <div class="column is-4">
+      <h2 class="title is-3">Your links</h2>
+      <ul>
+        {{!-- TODO: 위클리 목록에 있는 건 삭제 --}}
+        {{#each links as |link|}}
+          <li>
+            <div>
+              {{link.title}}
+              {{#unless link.isDraft}}
+                <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
+                  <span class="icon is-small">{{fa-icon "plus"}}</span>
+                </button>
+              {{/unless}}
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/unless}}
+  <div class="column">
+    <h2 class="title is-3">{{collection.title}} - New Newsletter</h2>
+    <div class="is-pulled-right">
+      {{!-- Help --}}
+      {{#unless hasDraftLink}}
+        <p class="help is-danger">Please add link</p>
+      {{/unless}}
+      {{#unless hasWeeklyTitle}}
+        <p class="help is-danger">Please insert title</p>
+      {{/unless}}
+
+      <p class="control is-grouped">
+        {{#if isPreviewMode}}
+        <button class="button" {{ action 'togglePreview' }}>
+          Show Edit
+        </button>
+        {{else}}
+          <button class="button {{unless isDraftAndPublishable 'is-disabled'}}"  {{ action 'togglePreview' }}>
+            Show Preview
+          </button>
+          <button class="button is-info {{unless isDraftAndPublishable 'is-disabled'}}" {{action 'saveWeekly'}}>
+            Save Weekly
+          </button>
+          <button class="button is-danger {{if isResetable 'is-disabled'}}" {{action "resetDraft"}}>
+            Reset
+          </button>
+        {{/if}}
+      </p>
+    </div>
+    <div class="is-clearfix"></div>
+    <br>
+    {{!-- Preivew --}}
+    {{#if isPreviewMode}}
+      {{weekly-draft-preview
+            links=newWeekly.links
+            sectionTitle=newWeekly.title
+            sectionDescription=newWeekly.description
+      }}
+    {{else}}
+      <div class="edit-draft">
+        {{!-- Edit --}}
+        <p class="control">
+          {{!-- TODO: cancat id after name  --}}
+          <label for="weekly-name" class="label">New Weekly</label>
+          {{input id="weekly-name"  class="input" type="text" value=newWeekly.title}}
+        </p>
+        <p class="control">
+          {{!-- TODO: cancat id after name  --}}
+        </p>
+        <div class="columns">
+          <div class="column">
+            <label for="weekly-publish" class="label">Publish Date</label>
+            {{pick-a-date
+              date=(readonly newWeekly.publishedAt)
+              on-selected=(action (mut newWeekly.publishedAt))
+              placeholder="Pick a date"
+              options=(readonly extraPickadateOptions)
+              class="input"}}
+          </div>
+          <div class="column">
+            <label for="weekly-publish" class="label">Publish Time</label>
+            {{pick-a-time
+              date=(readonly newWeekly.publishedAt)
+              on-selected=(action (mut newWeekly.publishedAt))
+              placeholder="Pick a time"
+              options=(readonly extraPickadateOptions)
+              class="input"}}
+          </div>
+        </div>
+        <p>
+          <label for="weekly-desc" class="label">This week's description</label>
+          {{textarea id="weekly-desc"  class="textarea" value=newWeekly.description}}
+        </p>
+        <hr>
+        {{weekly-new-draft-item-length }}
+        <div class="is-pulled-right">
+          {{plural-item-view newWeekly.links.length 'link' 'links' }}
+        </div>
+        <div class="is-clearfix"></div>
+        <hr>
+        <div>
+          <ul>
+            {{#each newWeekly.links as |link|}}
+              {{weekly-new-draft-item link=link
+                  saveDescriptionAction="saveDraftDescription"
+                  deleteAction="deleteDraftLink"}}
+              <hr>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</div>
+{{outlet}}

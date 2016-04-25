@@ -1,0 +1,40 @@
+<h2 class="title is-3">{{model.title}}  {{#link-to 'collections.show.weeklies.new' class="button is-primary"}}New Weekly{{/link-to}}</h2>
+<h3 class="subtitle is-3">{{model.description}}</h3>
+{{!-- Weekly NewsLetter list --}}
+{{#if (gt model.weeklies.length 0)}}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Links</th>
+        <th>Published At</th>
+        <th>Created At</th>
+      </tr>
+    </thead>
+    <tbody>
+    {{#each model.weeklies as |weekly|}}
+    <tr>
+      <td>{{weekly.id}}</td>
+      <td>
+      {{#link-to 'collections.show.weeklies.show' weekly}}{{weekly.title}}{{/link-to}}
+      </td>
+      <td>{{weekly.description}}</td>
+      <td>{{weekly.links.length}}</td>
+      <td>
+        {{#if isPublished}}
+          {{moment-format weekly.publishedAt 'MM.DD.YYYY'}}
+        {{/if}}
+      </td>
+      <td>{{moment-from-now weekly.createdAt}}</td>
+    </tr>
+    {{/each}}
+    </tbody>
+  </table>
+{{else}}
+  <h1 class="title is-1">There is no weekly newsletter. Please add first.</h1>
+{{/if}}
+{{outlet}}
+
+

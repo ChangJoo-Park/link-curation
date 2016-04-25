@@ -15,5 +15,5 @@ export default Model.extend({
     defaultValue() { return false; }
   }),
   description: attr('string'),
-  weekly: DS.belongsTo('weekly'),
+  weekly: DS.belongsTo('weekly', { async: true }),
 });
