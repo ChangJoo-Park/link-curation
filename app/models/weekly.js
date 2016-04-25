@@ -4,7 +4,7 @@ import DS from 'ember-data';
 export default Model.extend({
   title: attr('string'),
   description: attr('string'),
-  collection: DS.belongsTo('collection', { async: true, inverse: 'collection' }),
+  collection: DS.belongsTo('collection', { async: true }),
   links: DS.hasMany('link', { async: true }),
   isPublished: attr('boolean', { defaultValue: false }),
   publishedAt: attr('date', {

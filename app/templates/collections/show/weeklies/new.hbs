@@ -8,11 +8,9 @@
           <li>
             <div>
               {{link.title}}
-              {{#unless link.isDraft}}
-                <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
-                  <span class="icon is-small">{{fa-icon "plus"}}</span>
-                </button>
-              {{/unless}}
+              <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
+                <span class="icon is-small">{{fa-icon "plus"}}</span>
+              </button>
             </div>
           </li>
         {{/each}}
