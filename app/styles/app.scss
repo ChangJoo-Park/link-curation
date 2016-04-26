@@ -38,3 +38,14 @@ html {
   max-height: 80vh;
   overflow-y: scroll;
 }
+
+.link-list {
+  margin: 10px;
+  .link-item {
+    margin: 20px;
+  }
+}
+
+.favorite {
+  color: #fce473;
+}

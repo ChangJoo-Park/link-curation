@@ -1,23 +1,24 @@
 <h1 class="title is-3">Archive</h1>
-<p class="control is-grouped">
-  <input class="input" type="text" placeholder="Find a link">
-  <a class="button is-info">
-    Search
-  </a>
+<p class="control">
+  {{search-link-box value=searchTerm class="input" placeholder="Search Links"}}
+</p>
+
+<p class="control">
+  <label class="checkbox">
+    {{input type="checkbox" checked=filterByFavorite}}
+    Show only favorite links
+  </label>
 </p>
 
 <hr>
-
 <div class="columns">
   <div class="column">
-    <ul>
-      {{#each links as |link|}}
-        {{#link-item link=link}}
-          <button class="delete" {{action "deleteLink" link}}></button>
+    <ul class="link-list">
+      {{#each filteredLinks as |link index|}}
+        {{#link-item link=link showNotification="showNotification"}}
         {{/link-item}}
       {{/each}}
     </ul>
   </div>
 </div>
-
 {{outlet}}

@@ -13,10 +13,12 @@ export default Ember.Controller.extend({
         const randomUrl = faker.internet.url();
         const randomTitle = faker.internet.domainWord();
         const randomDescription = faker.lorem.sentences();
+        const randomFavorite = _.sample([true, false]);
         var link = this.store.createRecord('link', {
           title: randomTitle,
           url: randomUrl,
           description: randomDescription,
+          isFavorited: randomFavorite,
         });
         link.save();
         // reset generator
