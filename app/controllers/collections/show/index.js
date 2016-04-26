@@ -10,12 +10,34 @@ export default Ember.Controller.extend({
       let collection = this.get('collection');
       collection.save();
       this.changeEditState(false);
+      this.notifications.success("Collection was saved successfully", {
+        autoClear: true,
+        clearDuration: 1200
+      });
     },
     deleteCollection() {
-      let collection = this.get('collection');
-      collection.destroyRecord();
-      this.changeEditState(false);
-      this.transitionToRoute('collections.index');
+      let self = this;
+      swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this Collection!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel please!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      }, function(isConfirm){
+        if(isConfirm) {
+          let collection = self.get('collection');
+          collection.destroyRecord();
+          self.changeEditState(false);
+          self.transitionToRoute('collections.index');
+          swal("Deleted!", "Your collection has been deleted.", "success");
+        } else {
+          swal("Cancelled", "Your collection is safe :)", "error");
+        }
+      });
     },
     cancelEdit() {
       let collection = this.get('collection');

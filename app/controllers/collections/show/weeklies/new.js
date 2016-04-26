@@ -15,13 +15,16 @@ export default Ember.Controller.extend({
         return;
       }
       let weekly = this.get('newWeekly');
-
       weekly.get('links').addObject(this.store.createRecord('weeklyLink',{
         url: link.get('url'),
         title: link.get('title'),
         description: link.get('description'),
         weekly: weekly
       }));
+      this.notifications.success(`Add ${link.get('title')} successfully!`, {
+            autoClear: true,
+            clearDuration: 1200
+      });
     },
     saveWeekly() {
       let weekly = this.get('newWeekly');
@@ -33,7 +36,11 @@ export default Ember.Controller.extend({
       weekly.save().then(()=>{
         collection.save().then(()=>{
           this.transitionToRoute('collections.show', collection);
-        });
+          this.notifications.success("New Weekly was created successfully", {
+            autoClear: true,
+            clearDuration: 1200
+          });
+        }.bind(this));
       });
     },
     saveDraftDescription(link) {
@@ -42,13 +49,10 @@ export default Ember.Controller.extend({
     deleteDraftLink(link) {
       let weekly = this.get('newWeekly');
       weekly.get('links').removeObject(link);
-    },
-    resetDraft() {
-      let weekly = this.get('newWeekly');
-      this.set('newWeekly.title', '');
-      this.set('newWeekly.description', '');
-      weekly.get('links').clear();
-      weekly.rollbackAttributes();
+      this.notifications.warning(`Remove ${link.get('title')} successfully!`, {
+            autoClear: true,
+            clearDuration: 1200
+      });
     },
     togglePreview() {
       const newMode = !this.isPreviewMode;

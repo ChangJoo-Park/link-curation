@@ -18,10 +18,7 @@
               {{textarea value=link.description class="textarea" placeholder="What is this link?"}}
             </p>
             <p class="control is-grouped">
-              {{#if link.hasDirtyAttributes}}
-                <button class="button is-primary" {{action "saveDescriptionAction"}}>Save</button>
-              {{/if}}
-              <button class="button is-link" {{action "cancelDescriptionAction"}}>Cancel</button>
+              <button class="button is-primary" {{action "saveDescriptionAction"}}>Save</button>
             </p>
           {{else}}
             {{link.description}}

@@ -17,6 +17,8 @@ export default Ember.Component.extend({
         description: description
       });
       collection.save();
+      let message =`${title} is successfully saved.`;
+      this.sendAction('showNotification', "success", message);
       this._clearFormAndCloseModal();
     },
     closeCollectionModal() {
