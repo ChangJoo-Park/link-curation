@@ -1,17 +1,13 @@
 <li>
   <article class="media">
-    <figure class="media-left">
-      <p class="image is-64x64">
-        <img src="http://placehold.it/128x128">
-      </p>
-    </figure>
     <div class="media-content">
       <div class="content">
         <div>
           <p>
-            <strong>{{link.title}}</strong> {{link.url}}
+            <strong>{{link.title}}</strong>
+            <br>
+            {{link.url}}
           </p>
-
           {{#if isEditDescription}}
             <label class="label">{{t "component.weekly-new-draft-item.label.description"}}</label>
             <p class="control">

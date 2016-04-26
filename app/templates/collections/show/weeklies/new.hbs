@@ -7,10 +7,10 @@
         {{#each links as |link|}}
           <li>
             <div>
-              {{link.title}}
               <button class="button is-link is-small"{{action "addLinkToDraft" link}}>
                 <span class="icon is-small">{{fa-icon "plus"}}</span>
               </button>
+              {{link.title}}
             </div>
           </li>
         {{/each}}
