@@ -29,6 +29,8 @@ export default Ember.Component.extend({
       });
       link.save();
       this._clearFormAndCloseModal();
+      let message =`${title} is successfully saved.`;
+      this.sendAction('showNotification', "success", message);
     },
     closeLinkModal() {
       var confirmation = true;

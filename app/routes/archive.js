@@ -11,10 +11,4 @@ export default Ember.Route.extend({
     this._super(controller, model);
     controller.set('links', model.links);
   },
-
-  actions: {
-    deleteLink(link) {
-      link.destroyRecord();
-    }
-  }
 });

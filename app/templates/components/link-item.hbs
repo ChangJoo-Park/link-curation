@@ -1,33 +1,58 @@
-<article class="media">
-  <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="http://placehold.it/128x128">
-    </p>
-  </figure>
-  <div class="media-content">
-    <div class="content">
-      <p>
-        <strong>{{link.title}}</strong> <small>@johnsmith</small> <small>31 min ago</small>
-        <br>
-        <a href={{link.url}} target="_blank"> {{link.url}}</a>
+<div class="box link-item">
+  <article class="media">
+    <div class="media-content">
+      {{#if isEditState}}
+      <label class="label">Title</label>
+      <p class="control has-icon has-icon-right">
+        {{input type="text" class="input" value=link.title }}
+        {{#if link.isNotEmptyTitle}}
+          <span class="help is-success">This title is available</span>
+        {{else}}
+          <span class="help is-danger">This title is empty</span>
+        {{/if}}
+      </p>
+      <p class="control">
+        <label class="label">URL</label>
+        {{input type="text" class="input" value=link.url}}
+        {{#if link.isValidLink}}
+          <span class="help is-success">This url is available</span>
+        {{else}}
+          <span class="help is-danger">This url is unavailable</span>
+        {{/if}}
+      </p>
+      <p class="control">
+        <label class="label">Description</label>
+        {{textarea type="text" class="textarea" value=link.description}}
+      </p>
+      {{else}}
+        <p>
+          <span class="favorite" {{action "toggleFavorite"}}>
+          {{#if link.isFavorited}}
+            {{fa-icon "star"}}
+          {{else}}
+            {{fa-icon "star-o"}}
+          {{/if}}
+
+          </span>
+          &nbsp;<strong>{{link.title}}</strong> <small>{{moment-from-now link.createdAt}}</small>
+          <br>
+          <a href={{link.url}} target="_blank"> {{link.url}}</a>
+          <hr>
+          {{link.description}}
+        </p>
+      {{/if}}
+    </div>
+    <div class="media-right is-grouped">
+      <p class="control is-grouped">
+        {{#if isEditState}}
+          <button class="button is-success {{if link.isSaveAvailable '' 'is-disabled'}}"  {{action "saveLink" link}}>{{fa-icon "save"}}</button>
+          <button class="button" {{action "cancelLink" link}}>{{fa-icon "reply"}}</button>
+        {{else}}
+          <button class="button" {{action "editLink" link}}>{{fa-icon "pencil"}}</button>
+        {{/if}}
+        <button class="button is-danger" {{action "deleteLink" link}}>{{fa-icon "trash"}}</button>
+        {{yield}}
       </p>
     </div>
-    <nav class="navbar">
-      <div class="navbar-left">
-        <a class="navbar-item">
-          <span class="icon is-small">{{fa-icon "reply"}}</span>
-        </a>
-        <a class="navbar-item">
-          <span class="icon is-small">{{fa-icon "retweet"}}</span>
-        </a>
-        <a class="navbar-item">
-          <span class="icon is-small">{{fa-icon "heart"}}</span>
-        </a>
-      </div>
-    </nav>
-  </div>
-  <div class="media-right is-grouped">
-    {{yield}}
-  </div>
-</article>
-
+  </article>
+</div>
