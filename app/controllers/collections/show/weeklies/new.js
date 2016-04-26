@@ -10,6 +10,9 @@ export default Ember.Controller.extend({
   isResetable: Ember.computed.not('hasDraftLink'),
   isDraftAndPublishable: Ember.computed.and('hasDraftLink', 'hasWeeklyTitle'),
   actions: {
+    reorderItems(sortedLinks, draggedModel) {
+      this.set('newWeekly.links', sortedLinks);
+    },
     addLinkToDraft(link) {
       if(this._isDuplicate(link)) {
         return;

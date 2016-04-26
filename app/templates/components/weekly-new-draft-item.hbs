@@ -1,37 +1,39 @@
-<li>
-  <article class="media">
-    <div class="media-content">
-      <div class="content">
-        <div>
-          <p>
-            <strong>{{link.title}}</strong>
-            <br>
-            {{link.url}}
+<article class="media">
+  <div class="media-content">
+    <div class="content">
+      <div>
+        <p>
+          <strong>{{link.title}}</strong>
+          <br>
+          {{link.url}}
+        </p>
+        {{#if isEditDescription}}
+          <label class="label">{{t "component.weekly-new-draft-item.label.description"}}</label>
+          <p class="control">
+            {{textarea value=link.description class="textarea"}}
           </p>
-          {{#if isEditDescription}}
-            <label class="label">{{t "component.weekly-new-draft-item.label.description"}}</label>
-            <p class="control">
-              {{textarea value=link.description class="textarea"}}
-            </p>
-            <p class="control is-grouped">
-              <button class="button is-primary" {{action "saveDescriptionAction"}}>
-                {{t "component.weekly-new-draft-item.label.button.save"}}
-              </button>
-            </p>
-          {{else}}
-            {{link.description}}
-            <br>
-            <p class="control">
-              <button class="button is-link" {{action "editDescriptionAction"}}>
-                {{fa-icon "pencil"}}
-              </button>
-            </p>
-          {{/if}}
-        </div>
+          <p class="control is-grouped">
+            <button class="button is-primary" {{action "saveDescriptionAction"}}>
+              {{t "component.weekly-new-draft-item.label.button.save"}}
+            </button>
+          </p>
+        {{else}}
+          {{link.description}}
+          <br>
+          <p class="control">
+            <button class="button is-link" {{action "editDescriptionAction"}}>
+              {{fa-icon "pencil"}}
+            </button>
+          </p>
+        {{/if}}
       </div>
     </div>
-    <div class="media-right">
-      <button class="delete" {{action "deleteAction" }}></button>
-    </div>
-  </article>
-</li>
+  </div>
+  <div class="media-right">
+    <p class="control is-grouped">
+      <button class="button handle">{{fa-icon "arrows-v"}}</button>
+      <button class="button is-danger" {{action "deleteAction" }}>{{fa-icon "trash"}}</button>
+    </p>
+  </div>
+</article>
+<hr>

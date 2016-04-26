@@ -58,7 +58,6 @@
               {{t "weekly.new-weekly.table.weekly.title.helper.dnager"}}
             </p>
           {{/unless}}
-
         </p>
         <p class="control">
           {{!-- TODO: cancat id after name  --}}
@@ -92,7 +91,6 @@
           {{textarea id="weekly-desc"  class="textarea" value=newWeekly.description}}
         </p>
         <hr>
-        {{weekly-new-draft-item-length }}
         <div class="is-pulled-right">
           {{t "weekly.new-weekly.linkCounter" count=newWeekly.links.length}}
           {{#unless hasDraftLink}}
@@ -103,16 +101,16 @@
         </div>
         <div class="is-clearfix"></div>
         <hr>
-        <div>
-          <ul>
-            {{#each newWeekly.links as |link|}}
+        {{!-- FIXME: Sortable List --}}
+        {{#sortable-group tagName="ul" onChange="reorderItems" as |group|}}
+          {{#each newWeekly.links as |link|}}
+            {{#sortable-item tagName="li" model=link group=group handle=".handle"}}
               {{weekly-new-draft-item link=link
                   saveDescriptionAction="saveDraftDescription"
                   deleteAction="deleteDraftLink"}}
-              <hr>
-            {{/each}}
-          </ul>
-        </div>
+            {{/sortable-item}}
+          {{/each}}
+        {{/sortable-group}}
       </div>
     {{/if}}
   </div>
