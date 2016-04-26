@@ -8,7 +8,9 @@
         {{input type="text" value=collection.title}}
         <button class="button is-primary" {{action "saveCollection"}}>{{fa-icon "save"}}</button>
         <button class="button is-danger" {{action "deleteCollection"}}>{{fa-icon "trash"}}</button>
-        <button class="button is-link" {{action "cancelEdit"}}>Cancel</button>
+        <button class="button is-link" {{action "cancelEdit"}}>
+          {{t "collections.index.cancel"}}
+        </button>
       {{else}}
         {{collection.title}}
         <button class="button" {{action "editCollection"}}>{{fa-icon "pencil"}}</button>
@@ -22,7 +24,9 @@
       {{/if}}
     </h3>
     <div class="is-pulled-right">
-      {{#link-to 'collections.show.weeklies.new' class="button is-primary"}}New Weekly{{/link-to}}
+      {{#link-to 'collections.show.weeklies.new' class="button is-primary"}}
+        {{t "collections.index.label.new-weekly"}}
+      {{/link-to}}
     </div>
     <div class="is-clearfix"></div>
     <br>
@@ -32,9 +36,9 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Published Date</th>
+            <th>{{t "collections.index.table.title"}}</th>
+            <th>{{t "collections.index.table.description"}}</th>
+            <th>{{t "collections.index.table.published-at"}}</th>
             <th></th>
           </tr>
         </thead>
@@ -50,7 +54,7 @@
           <td>
             <p class="control has-addons">
               {{#link-to 'collections.show.weeklies.show' weekly}}
-                Show
+                {{t "collections.index.table.row.label.show"}}
               {{/link-to}}
             </p>
           </td>
@@ -59,7 +63,9 @@
         </tbody>
       </table>
     {{else}}
-      <h1 class="title is-1">There is no weekly newsletter. Please add first.</h1>
+      <h1 class="title is-5">
+        {{t "collections.index.no.weekly"}}
+      </h1>
     {{/if}}
     {{outlet}}
   </div>

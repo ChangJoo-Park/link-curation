@@ -1,6 +1,6 @@
 <nav class="panel">
   <p class="panel-heading">
-    {{plural-item-view collections.length "Collection" "Collections"}}
+    {{t "sidebar.column.collectionCounter" count=collections.length}}
   </p>
   {{#each collections as |collection|}}
   {{#link-to 'collections.show' collection class="panel-block"}}

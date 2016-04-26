@@ -3,7 +3,9 @@
 </h1>
 <hr>
 <div class="is-pulled-right">
-  <button class="button is-primary" {{action "openCollectionModal"}}>New Collections</button>
+  <button class="button is-primary" {{action "openCollectionModal"}}>
+    {{t "collections.index.title"}}
+  </button>
 </div>
 <div class="is-clearfix"></div>
 
@@ -14,7 +16,7 @@
       <p class="collection-header">{{#link-to 'collections.show' collection}}{{collection.title}}{{/link-to}}</p>
       <p class="collection-description">{{collection.description}}</p>
       <p class="collection-miscellaneous">
-        Weeklies : {{collection.weeklies.length}}
+        {{t "collections.index.weeklies"}} : {{collection.weeklies.length}}
       </p>
     </div>
   </div>

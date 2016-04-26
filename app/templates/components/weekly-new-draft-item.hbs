@@ -13,12 +13,14 @@
           </p>
 
           {{#if isEditDescription}}
-            <label class="label">Description</label>
+            <label class="label">{{t "component.weekly-new-draft-item.label.description"}}</label>
             <p class="control">
-              {{textarea value=link.description class="textarea" placeholder="What is this link?"}}
+              {{textarea value=link.description class="textarea"}}
             </p>
             <p class="control is-grouped">
-              <button class="button is-primary" {{action "saveDescriptionAction"}}>Save</button>
+              <button class="button is-primary" {{action "saveDescriptionAction"}}>
+                {{t "component.weekly-new-draft-item.label.button.save"}}
+              </button>
             </p>
           {{else}}
             {{link.description}}

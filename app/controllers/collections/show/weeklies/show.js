@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
             link.destroyRecord();
           });
           weekly.destroyRecord();
-          let collection = this.get('collection');
+          let collection = self.get('collection');
           self.transitionToRoute('collections.show.index', collection);
           swal("Deleted!", "Your Weekly has been deleted.", "success");
         } else {

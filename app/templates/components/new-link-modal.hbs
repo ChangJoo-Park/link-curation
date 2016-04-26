@@ -1,28 +1,36 @@
 <div class="modal-background"></div>
 <div class="modal-container">
   <div class="modal-content">
-    <h1 class="title is-3">New Link</h1>
-    <label class="label">Link URL</label>
+    <h1 class="title is-3">{{t "component.link-item.label.modal.title"}}</h1>
+    <label class="label">{{t "component.link-item.label.title"}}</label>
     <p class="control">
-      {{input value=newLink class="input" type="text" placeholder="Please insert link" autofocus="autofocus"}}
+      {{input value=newLink class="input" type="text" autofocus="autofocus"}}
       {{#unless isValidLink}}
-        <span class="help is-danger">This link is unavailable</span>
+        <span class="help is-danger">{{t "component.link-item.label.url.helper.danger"}}</span>
       {{/unless}}
     </p>
-    <label class="label">Title</label>
+    <label class="label">
+      {{t "component.link-item.label.title"}}
+    </label>
     <p class="control">
-      {{input value=newTitle class="input" type="text" placeholder="Please insert title"}}
+      {{input value=newTitle class="input" type="text"}}
       {{#unless isNotEmptyTitle}}
-        <span class="help is-danger">please insert title</span>
+        <span class="help is-danger">{{t "component.link-item.label.title.helper.danger"}}</span>
       {{/unless}}
     </p>
-    <label class="label">Description</label>
+    <label class="label">
+      {{t "component.link-item.label.description"}}
+    </label>
     <p class="control">
-      {{textarea value=newDescription class="textarea" placeholder="Textarea"}}
+      {{textarea value=newDescription class="textarea"}}
     </p>
     <p class="control">
-      <button class="button is-primary {{if isSaveAvailable '' 'is-disabled'}}" {{action "saveLink"}} >Submit</button>
-      <button class="button is-link" {{action "closeLinkModal"}}>Cancel</button>
+      <button class="button is-primary {{if isSaveAvailable '' 'is-disabled'}}" {{action "saveLink"}} >
+        {{t "component.link-item.label.submit"}}
+      </button>
+      <button class="button is-link" {{action "closeLinkModal"}}>
+        {{t "component.link-item.label.cancel"}}
+      </button>
     </p>
   </div>
 </div>
