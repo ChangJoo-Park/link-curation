@@ -1,5 +1,4 @@
 {{!-- Main Nav --}}
-
 <header class="header">
   <div class="container">
     <!-- Left side -->
@@ -32,6 +31,16 @@
           {{fa-icon "plus"}}
         </button>
       </span>
+      {{#if session.isAuthenticated}}
+      <span class="header-item">
+        <a href="#" {{action "logout"}} class="button">Logout</a>
+      </span>
+
+      {{else}}
+      <span class="header-item">
+        {{link-to 'Login / Sign Up' 'session.new' class="button"}}
+      </span>
+      {{/if}}
     </div>
   </div>
 </header>

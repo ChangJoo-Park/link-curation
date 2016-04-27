@@ -1,7 +1,17 @@
 import Ember from 'ember';
+var inject = Ember.inject;
 
 export default Ember.Controller.extend({
+  session: inject.service(),
   actions: {
+    logout() {
+      let self = this;
+      let session = this.get('session');
+      session.logout(function(){
+        alert("!!");
+        self.transitionToRoute('home');
+      });
+    },
     openLinkModal() {
       $("#new-link-modal").addClass('active');
     },

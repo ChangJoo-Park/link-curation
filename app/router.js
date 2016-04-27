@@ -23,6 +23,14 @@ Router.map(function() {
     });
 
   });
+
+  this.route('register', function() {
+    this.route('new');
+  });
+
+  this.route('session', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

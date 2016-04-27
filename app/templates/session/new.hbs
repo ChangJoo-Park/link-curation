@@ -1,0 +1,27 @@
+<h1 class="title is-1">
+  Login
+</h1>
+{{#if errorMessage}}
+<div class="notification is-danger">
+  {{errorMessage}}
+</div>
+{{/if}}
+
+<form {{action "login" on="submit"}}>
+<label class="label">Email</label>
+<p class="control">
+  {{input class="input" type="email" value=userEmail}}
+</p>
+<label class="label">Password</label>
+<p class="control">
+  {{input class="input" type="password" value=userPassword}}
+</p>
+<p class="control">
+  <button type="submit" class="form-submit button is-primary {{if isLoading 'is-loading' ''}}">
+    Submit
+  </button>
+</p>
+</form>
+<hr>
+{{link-to 'Sign Up' 'register.new' class="button is-link"}}
+{{outlet}}

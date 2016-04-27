@@ -1,0 +1,27 @@
+<h1 class="title is-2">Register</h1>
+<form {{action "signup" on="submit"}}>
+<label class="label">Email</label>
+<p class="control">
+  {{input class="input" type="email" value=userEmail}}
+</p>
+<label class="label">Password</label>
+<p class="control">
+  {{input class="input" type="password" value=userPassword}}
+</p>
+<label class="label">Password Confirmation</label>
+<p class="control">
+  {{input class="input" type="password" value=userPasswordConfirmation}}
+</p>
+
+<p class="control">
+  <input type="submit" class="button is-primary" value="Submit">
+</p>
+</form>
+
+
+{{#if session.isAuthenticated}}
+  logged in
+{{else}}
+  Not logged in
+{{/if}}
+{{outlet}}
