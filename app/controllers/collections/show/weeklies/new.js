@@ -1,6 +1,4 @@
 import Ember from 'ember';
-import _ from 'lodash';
-import moment from 'npm:moment';
 
 export default Ember.Controller.extend({
   newDate: new Date(),
@@ -10,7 +8,7 @@ export default Ember.Controller.extend({
   isResetable: Ember.computed.not('hasDraftLink'),
   isDraftAndPublishable: Ember.computed.and('hasDraftLink', 'hasWeeklyTitle'),
   actions: {
-    reorderItems(sortedLinks, draggedModel) {
+    reorderItems(sortedLinks) {
       this.set('newWeekly.links', sortedLinks);
     },
     addLinkToDraft(link) {
@@ -46,9 +44,6 @@ export default Ember.Controller.extend({
         }.bind(this));
       });
     },
-    saveDraftDescription(link) {
-      // link.save();
-    },
     deleteDraftLink(link) {
       let weekly = this.get('newWeekly');
       weekly.get('links').removeObject(link);
@@ -70,7 +65,7 @@ export default Ember.Controller.extend({
       const url = link.get('url');
       if (newLink.get('url') === url) {
         isDuplicate = true;
-        return isDuplicate
+        return isDuplicate;
       }
     });
     return isDuplicate;
