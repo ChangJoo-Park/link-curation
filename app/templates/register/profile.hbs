@@ -1,0 +1,11 @@
+<h1 class="title is-2">Profile</h1>
+<form {{action "addProfile" on="submit"}}>
+  <p class="control">
+    <label class="label">Name</label>
+    {{input type="text" class="input" value=newName}}
+  </p>
+  <input type="submit"
+   value="Submit"
+   class="button is-primary {{unless isSaveAvailable 'is-disabled'}}">
+</form>
+{{outlet}}

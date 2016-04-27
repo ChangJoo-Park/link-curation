@@ -4,10 +4,8 @@ var inject = Ember.inject;
 export default Ember.Route.extend({
   session: inject.service(),
   beforeModel() {
-    console.log("Before Model");
     let session = this.get('session');
     if(session.isLoggedIn()) {
-      console.log('session check you are logged in');
       this.transitionTo('application');
     }
   },
@@ -28,7 +26,17 @@ export default Ember.Route.extend({
           if(error) {
             ctrl.set('errorMessage', error);
           } else {
-            self.transitionTo('application');
+            // Find User account
+            const uid = authData.uid;
+            console.log(uid);
+            self.store.query('user', { uid: uid }).then((result)=>{
+              console.log(result.content.length);
+              if(result.content.length == 0) {
+                self.transitionTo('register.profile');
+              } else {
+                self.transitionTo('application');
+              }
+            });
           }
         });
       });

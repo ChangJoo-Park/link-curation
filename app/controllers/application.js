@@ -7,9 +7,24 @@ export default Ember.Controller.extend({
     logout() {
       let self = this;
       let session = this.get('session');
-      session.logout(function(){
-        alert("!!");
-        self.transitionToRoute('home');
+      swal({
+        title: "Are you sure?",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, want out!",
+        cancelButtonText: "No, cancel please!",
+        closeOnConfirm: false,
+        closeOnCancel: false
+      }, function(isConfirm){
+        if(isConfirm) {
+          session.logout(function(){
+            self.transitionToRoute('home');
+            swal("See you!", "I'll miss you :)", "success");
+          });
+        } else {
+          swal("Cancelled", "Thank you:)", "error");
+        }
       });
     },
     openLinkModal() {

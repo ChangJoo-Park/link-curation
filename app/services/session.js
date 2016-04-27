@@ -5,15 +5,17 @@ import { storageFor } from 'ember-local-storage';
 export default Ember.Service.extend({
   sessionStorage: storageFor('session-storage'),
   ref: new Firebase('https://linkweekly.firebaseio.com/'),
-  isAuthenticated: Ember.computed('sessionStorage.isAuthenticated', function(){
-    console.log("Changed");
-    return this.get('sessionStorage.isAuthenticated');
-  }),
+  isAuthenticated: Ember.computed.notEmpty('sessionStorage.session'),
+  getAuthData() {
+    return this.get('sessionStorage.session');
+  },
   isLoggedIn() {
-    return this.get('isAuthenticated');
+    if(this.get('sessionStorage.session') == null) {
+      return false;
+    }
+    return true;
   },
   loginWithEmail(email, password, resolve) {
-    console.log('loginWithEmail');
     let self = this;
     this.ref.authWithPassword({
       email: email,
@@ -21,32 +23,34 @@ export default Ember.Service.extend({
     }, function(error, authData){
       let sessionStorage = self.get('sessionStorage');
       if(error) {
-        console.log("Failed", error);
         resolve(error, authData);
+        sessionStorage.set('session', null);
       } else {
-        sessionStorage.set('isAuthenticated', true);
+        console.log(authData);
+        sessionStorage.set('session', authData);
         resolve(error, authData);
       }
     });
   },
 
-  createUser(email, password) {
-    console.log(email, password);
+  createUser(email, password, resolve) {
     this.ref.createUser({
       email: email,
       password: password
     }, function(error, userData) {
       if(error) {
         console.error("Error creating user:", error);
+        resolve(error,userData);
       } else {
         console.log("Successfully created user account with uid:", userData.uid);
+        resolve(error,userData);
       }
     });
   },
   logout(resolve) {
     this.ref.unauth();
     let sessionStorage = this.get('sessionStorage');
-    sessionStorage.set('isAuthenticated', false);
-    resolve()
+    sessionStorage.set('session', null);
+    resolve();
   }
 });

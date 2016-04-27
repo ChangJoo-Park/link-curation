@@ -26,6 +26,7 @@ Router.map(function() {
 
   this.route('register', function() {
     this.route('new');
+    this.route('profile');
   });
 
   this.route('session', function() {
