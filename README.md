@@ -11,7 +11,7 @@ This is archive and curate links app for overflowing internet links.
 - Create Collections
 
 
-## Buid.
+## Build.
 If you use this in your own firebase, go `environment.js` and change line **firebase**.
 
 ## Used Libraries.
