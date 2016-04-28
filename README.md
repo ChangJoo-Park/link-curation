@@ -31,5 +31,3 @@ If you use this in your own firebase, go `environment.js` and change line **fire
 - ![Imgur](http://i.imgur.com/ewxAywe.png)
 - ![Imgur](http://i.imgur.com/b1zFphs.png)
 - ![Imgur](http://i.imgur.com/Rxu0uHq.png)
-
-
