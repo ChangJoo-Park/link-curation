@@ -2,6 +2,7 @@ import DS from 'ember-data';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import isUrl from 'npm:validator/lib/isUrl';
+import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   url: attr('string'),
@@ -25,4 +26,5 @@ export default Model.extend({
     return result;
   }),
   isSaveAvailable: Ember.computed.and('isValidLink','isNotEmptyTitle'),
+  user: belongsTo('user'),
 });

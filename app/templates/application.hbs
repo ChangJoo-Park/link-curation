@@ -17,7 +17,6 @@
 
     <!-- Right side -->
     <div class="header-right header-menu">
-      {{#if session.isAuthenticated}}
       <span class="header-item">
         {{link-to 'Archive' 'archive' class="link is-info"}}
       </span>
@@ -31,15 +30,6 @@
         </button>
       </span>
 
-      <span class="header-item">
-        <a href="#" {{action "logout"}} class="button">Logout</a>
-      </span>
-
-      {{else}}
-      <span class="header-item">
-        {{link-to 'Login / Sign Up' 'session.new' class="button"}}
-      </span>
-      {{/if}}
     </div>
   </div>
 </header>

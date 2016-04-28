@@ -6,7 +6,8 @@ const Storage = StorageObject.extend();
 Storage.reopenClass({
   initialState() {
     return {
-      session: null
+      session: null,
+      user: null,
     };
   }
 });
