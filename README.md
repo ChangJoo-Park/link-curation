@@ -1,53 +1,35 @@
-# Frontend
+# Link Curation
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is archive and curate links app for overflowing internet links.
 
-## Prerequisites
+## Features.
+- Show latest issues - You will see the curated links.
+- Add link - You can add link whererver you are in.
+- Modfiy Link - Search, Favorite, Filter, Update, Delete
+- Create Issues
+- Preview Issue.
+- Create Collections
 
-You will need the following things properly installed on your computer.
 
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM)
-* [Bower](http://bower.io/)
-* [Ember CLI](http://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+## Buid.
+If you use this in your own firebase, go `environment.js` and change line **firebase**.
 
-## Installation
+## Used Libraries.
+- [bulmacss](http://bulma.io) :  (you need change css `is-active` to `active`).
+- [faker](https://github.com/marak/Faker.js/) : Need to populate random data.
+- [ember-moment](https://github.com/stefanpenner/ember-moment)
+- [ember-i18n](https://github.com/jamesarosen/ember-i18n)
+- [ember-cli-sass](https://github.com/aexmachina/ember-cli-sass)
+- [ember-font-awesome](https://github.com/martndemus/ember-font-awesome)
+- [ember-truth-helpers](https://github.com/jmurphyau/ember-truth-helpers)
+- [emberfire](https://github.com/firebase/emberfire)
+- [sweetalert](http://t4t5.github.io/sweetalert/)
+- [ember-cli-notifications](https://github.com/stonecircle/ember-cli-notifications)
 
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
+## Screenshots.
+- ![Imgur](http://i.imgur.com/yEvJDok.png)
+- ![Imgur](http://i.imgur.com/ewxAywe.png)
+- ![Imgur](http://i.imgur.com/b1zFphs.png)
+- ![Imgur](http://i.imgur.com/Rxu0uHq.png)
 
-## Running / Development
-
-* `ember server`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](http://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
 
