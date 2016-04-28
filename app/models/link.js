@@ -26,5 +26,4 @@ export default Model.extend({
     return result;
   }),
   isSaveAvailable: Ember.computed.and('isValidLink','isNotEmptyTitle'),
-  user: belongsTo('user'),
 });

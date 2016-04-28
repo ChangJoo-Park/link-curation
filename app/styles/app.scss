@@ -49,3 +49,16 @@ html {
 .favorite {
   color: #fce473;
 }
+.issue-item-wrapper {
+  min-height: 200px;
+  .issue-item {
+    padding: 10px;
+    // border: 1px solid black;
+    // border-radius: 10px;
+    .link-list {
+      li {
+        padding-bottom:  5px;
+      }
+    }
+  }
+}

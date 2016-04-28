@@ -7,5 +7,4 @@ export default Model.extend({
   title: attr('string'),
   description: attr('string'),
   weeklies: DS.hasMany('weekly', { async: true }),
-  user: belongsTo('user')
 });

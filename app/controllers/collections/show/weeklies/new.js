@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
       weekly.save().then(()=>{
         collection.save().then(()=>{
           this.transitionToRoute('collections.show', collection);
-          this.notifications.success("New Weekly was created successfully", {
+          this.notifications.success("New Issue was created successfully", {
             autoClear: true,
             clearDuration: 1200
           });

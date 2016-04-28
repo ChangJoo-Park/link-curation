@@ -1,6 +1,7 @@
 <div class="columns">
   {{number-box title="Links" number=links.length}}
-  {{number-box title="Weeklys" number=weeklies.length}}
+  {{number-box title="Weeklies" number=weeklies.length}}
+  {{number-box title="Collections" number=collections.length}}
 </div>
 
 <div class="columns">
@@ -14,11 +15,19 @@
   }}
   {{seeder-block
                 counter=weeklyCounter
-                sectionTitle="Number of New links"
+                sectionTitle="Number of New Weeklies"
                 generateAction="generateWeeklys"
                 deleteAction="deleteWeeklys"
                 createReady=weeklyDone
                 deleteReady=weeklyDelDone
+  }}
+  {{seeder-block
+                counter=collectionCounter
+                sectionTitle="Number of New Collections"
+                generateAction="generateCollections"
+                deleteAction="deleteCollections"
+                createReady=collectionDone
+                deleteReady=collectionDelDone
   }}
 </div>
 {{outlet}}

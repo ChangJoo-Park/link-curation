@@ -1,2 +1,22 @@
 {{!-- Main --}}
+<h1 class="title is-4">Latest Issues</h1>
+<div class="columns is-multiline is-mobile">
+{{#each sortedIssues as |issue|}}
+  <div class="column is-one-quarter issue-item-wrapper">
+    <div class="box issue-item">
+      <h1 class="title is-5">{{issue.title}}</h1>
+      <p>{{issue.description}}</p>
+      <ul class="link-list">
+        {{#each issue.links as |link|}}
+          <li>
+            <a href={{link.url}} target="_blank" title={{link.description}}>
+              {{link.title}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+{{/each}}
+</div>
 {{outlet}}

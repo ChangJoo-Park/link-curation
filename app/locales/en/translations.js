@@ -41,17 +41,17 @@ export default {
 
   // Template Collections/index.hbs
   "collections.index.title": "New Collections",
-  "collections.index.weeklies": "weeklies",
-  "collections.index.label.new-weekly": "New Weekly",
+  "collections.index.weeklies": "issues",
+  "collections.index.label.new-weekly": "New Issue",
   "collections.index.cancel": "Cancel",
   "collections.index.table.title": "Title",
   "collections.index.table.description": "Description",
   "collections.index.table.published-at": "Published At",
   "collections.index.table.row.label.show": "Show",
-  "collections.index.no.weekly": "There is no weekly newsletter. Please add first.",
+  "collections.index.no.weekly": "There is no issues. Please add first.",
 
   // Template create new weekly
-  "weekly.new-weekly.table.weekly.title": "New Weekly",
+  "weekly.new-weekly.table.weekly.title": "New Issue",
   "weekly.new-weekly.table.weekly.title.helper.dnager": "Please insert title",
   "weekly.new-weekly.table.weekly.published-at": "Publish Date",
   "weekly.new-weekly.table.weekly.pick.date.label": "Pick a Date",
